@@ -4,8 +4,8 @@ import React from "react";
 const Billboard = () => {
     const { data } = useBillboard();
 return(
-    <div>
-
+    <div className="relative h-[56.25vw]" >
+        <video autoPlay muted loop poster={data?.thumbnailUrl} src={data?.videoUrl}></video>
     </div>
     )
 }
