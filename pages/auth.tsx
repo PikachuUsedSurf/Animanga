@@ -116,7 +116,7 @@ const register = useCallback(async() => {
                                 </div>
                         </div>
                         <p className="text-neutral-500 mt-12 ml-2">
-                            {variant === 'login' ? 'first time using netflix?' : 'already have an account?'}
+                            {variant === 'login' ? 'first time using Animanga?' : 'already have an account?'}
                             <span onClick={toggleVariant}  className="text-white ml-2 hover:underline cursor-pointer">
                                 {variant === 'login' ? 'create an account' : 'login'}
                             </span>
