@@ -76,7 +76,7 @@ const MovieCard: React.FC<MovieCardProps> = ({
                 transition
                 hover:bg-neutral-300
                 ' onClick={() => {}}>
-                    <BsFillPlayCircleFill size={20} />
+                    <BsFillPlayCircleFill size={30} />
                 </div>
             </div>
               <p className="text-green-400 font-semibold mt-4">
