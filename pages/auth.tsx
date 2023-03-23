@@ -4,49 +4,44 @@ import axios from "axios";
 import { signIn } from 'next-auth/react'
 import { FcGoogle } from 'react-icons/fc';
 import { FaGithub } from 'react-icons/fa';
-import { useRouter } from "next/router";
 
-const Auth = () => {
-    const router = useRouter();
-  
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-  
-    const [variant, setVariant] = useState('login');
-  
-    const toggleVariant = useCallback(() => {
-      setVariant((currentVariant) => currentVariant === 'login' ? 'register' : 'login');
-    }, []);
-  
-    const login = useCallback(async () => {
-      try {
+const Auth  = () => {
+const [email, setEmail] = useState('');
+const [name, setName] = useState('');
+const [password, setPassword] = useState('');
+
+const [variant, setVariant] = useState('login');
+
+const toggleVariant = useCallback(() => {
+    setVariant((currentVariant) => currentVariant === 'login' ? 'register' : 'login');
+}, []);
+
+const login = useCallback(async() => {
+    try {
         await signIn('credentials', {
-          email,
-          password,
-          redirect: false,
-          callbackUrl: '/'
+            email,
+            password,
+            callbackUrl: '/profiles'
         });
-  
-        router.push('/profiles');
-      } catch (error) {
+
+    } catch(error){
         console.log(error);
-      }
-    }, [email, password, router]);
-  
-    const register = useCallback(async () => {
-      try {
+    }
+    }, [email, password]);
+
+const register = useCallback(async() => {
+    try {
         await axios.post('/api/register', {
-          email,
-          name,
-          password
+            email,
+            name,
+            password
         });
-  
+
         login();
-      } catch (error) {
-          console.log(error);
-      }
-    }, [email, name, password, login]);
+    } catch (error) {
+        console.log(error)
+    }
+}, [email, name, password, login]);
 
 
     return (
